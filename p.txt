@@ -1,0 +1,53 @@
+import re
+
+ 
+
+def is_password_strong(password):
+
+    # Check length
+
+    if len(password) < 8:
+
+        return False
+
+   
+
+    # Check for upper and lower case letters
+
+    if not any(c.isupper() for c in password) or not any(c.islower() for c in password):
+
+        return False
+
+   
+
+    # Check for digits
+
+    if not any(c.isdigit() for c in password):
+
+        return False
+
+   
+
+    # Check for special characters
+
+    if not re.search("[!@#$%^&*(),.?\":{}|<>]", password):
+
+        return False
+
+   
+
+    # Password is strong if it passes all checks
+
+    return True
+
+ 
+
+password = input("Enter a password: ")
+
+if is_password_strong(password):
+
+    print("Password is strong!")
+
+else:
+
+    print("Password is weak. Please choose a stronger password.")
